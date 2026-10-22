@@ -1,0 +1,596 @@
+/* ==========================================================================
+   EXACT MATCH — STUDENT LEARNING HUB COSMIC WELCOME PORTAL
+   Colour Palette:
+   - Deep Midnight Galaxy: #080A21, #0C0F2F, #191347, #060818
+   - Electric Blue:        #245BFF
+   - Radiant Cyan:         #00D9FF
+   - Vivid Magenta:        #E638FF
+   - Neon Violet:          #7928FF
+   - Sunset Twilight:      #FF8A50, #FFA726, #FF4081
+   ========================================================================== */
+
+/* Main Fullscreen Root */
+.cosmic-hub-root {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  background-color: #080A21;
+  background: radial-gradient(ellipse at 50% 10%, #1c154e 0%, #0d1033 40%, #060818 95%);
+  color: #ffffff;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   1. NEBULAE & COSMIC AMBIENT GLOWS
+   ========================================================================== */
+.cosmic-nebula {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(100px);
+  z-index: 1;
+}
+
+.nebula-top-cyan {
+  top: -150px;
+  left: 15%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0, 217, 255, 0.32) 0%, rgba(36, 91, 255, 0.16) 50%, transparent 70%);
+}
+
+.nebula-top-magenta {
+  top: -120px;
+  right: 12%;
+  width: 750px;
+  height: 750px;
+  background: radial-gradient(circle, rgba(230, 56, 255, 0.3) 0%, rgba(121, 40, 255, 0.18) 50%, transparent 70%);
+}
+
+.nebula-center-ring {
+  top: 220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 480px;
+  background: radial-gradient(ellipse, rgba(121, 40, 255, 0.3) 0%, rgba(0, 217, 255, 0.18) 45%, transparent 70%);
+}
+
+.sunset-horizon-wash {
+  position: absolute;
+  bottom: 120px;
+  left: 0;
+  right: 0;
+  height: 340px;
+  background: radial-gradient(ellipse at 50% 100%, rgba(255, 120, 60, 0.32) 0%, rgba(230, 56, 255, 0.16) 45%, transparent 80%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   2. LUMINOUS COSMIC ELLIPTICAL ENERGY RINGS
+   ========================================================================== */
+.cosmic-ring-outer {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  width: 1040px;
+  height: 380px;
+  border-radius: 50%;
+  border: 2.5px solid transparent;
+  background: linear-gradient(90deg, #00D9FF, #245BFF, #E638FF, #7928FF, #00D9FF) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  box-shadow: 0 0 50px rgba(0, 217, 255, 0.6), 0 0 100px rgba(230, 56, 255, 0.45);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.9;
+  animation: cosmicRingGlow 10s ease-in-out infinite alternate;
+}
+
+.cosmic-ring-inner {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(10deg);
+  width: 820px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 217, 255, 0.7);
+  box-shadow: 0 0 40px rgba(121, 40, 255, 0.5), inset 0 0 30px rgba(0, 217, 255, 0.3);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.85;
+  animation: cosmicRingInnerSpin 35s linear infinite;
+}
+
+@keyframes cosmicRingGlow {
+  0% {
+    transform: translate(-50%, -50%) rotate(-6deg) scale(0.99);
+    filter: brightness(0.95);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-5deg) scale(1.02);
+    filter: brightness(1.15);
+  }
+}
+
+@keyframes cosmicRingInnerSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(10deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(370deg);
+  }
+}
+
+/* ==========================================================================
+   3. HERO TYPOGRAPHY & GRADIENTS
+   ========================================================================== */
+.cosmic-hero-heading {
+  font-size: clamp(2.6rem, 6.2vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-shadow: 0 4px 35px rgba(0, 0, 0, 0.7), 0 0 70px rgba(121, 40, 255, 0.4);
+}
+
+.cosmic-gradient-span {
+  background: linear-gradient(90deg, #00D9FF 0%, #245BFF 28%, #E638FF 72%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 35px rgba(230, 56, 255, 0.6));
+}
+
+/* ==========================================================================
+   4. LARGE CENTRAL GLOWING "ENTER STUDENT LEARNING HUB" BUTTON
+   ========================================================================== */
+.cosmic-enter-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px 44px;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #00D9FF 0%, #245BFF 30%, #7928FF 70%, #E638FF 100%);
+  background-size: 200% 200%;
+  animation: cosmicBtnFlow 5s ease infinite;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 35px rgba(0, 217, 255, 0.8), 0 0 75px rgba(230, 56, 255, 0.6), 0 14px 32px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  z-index: 10;
+}
+
+@keyframes cosmicBtnFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.cosmic-enter-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 0 50px rgba(0, 217, 255, 1), 0 0 95px rgba(230, 56, 255, 0.85), 0 18px 40px rgba(0, 0, 0, 0.7);
+  border-color: #ffffff;
+}
+
+.cosmic-enter-btn:active {
+  transform: translateY(0) scale(1.01);
+}
+
+.cosmic-enter-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 220%;
+  height: 200%;
+  background: linear-gradient(75deg, transparent 40%, rgba(255, 255, 255, 0.6) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.cosmic-enter-btn:hover::after {
+  transform: translateX(100%);
+}
+
+/* ==========================================================================
+   5. FLOATING GLASS-STYLE ACADEMIC CARDS (LEFT & RIGHT)
+   ========================================================================== */
+.cosmic-glass-card {
+  position: relative;
+  background: rgba(14, 18, 52, 0.76);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.65), 0 0 25px rgba(121, 40, 255, 0.25);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+}
+
+.cosmic-glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
+  pointer-events: none;
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
+}
+
+.cosmic-glass-card:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+/* Specific Glow Highlights matching the screenshot */
+.card-red {
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 68, 68, 0.35);
+}
+.card-red:hover {
+  border-color: rgba(239, 68, 68, 1);
+  box-shadow: 0 20px 45px -5px rgba(239, 68, 68, 0.55), 0 0 40px rgba(239, 68, 68, 0.55);
+}
+
+.card-cyan {
+  border-color: rgba(0, 217, 255, 0.6);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 217, 255, 0.35);
+}
+.card-cyan:hover {
+  border-color: rgba(0, 217, 255, 1);
+  box-shadow: 0 20px 45px -5px rgba(0, 217, 255, 0.55), 0 0 40px rgba(0, 217, 255, 0.55);
+}
+
+.card-violet {
+  border-color: rgba(121, 40, 255, 0.65);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(121, 40, 255, 0.38);
+}
+.card-violet:hover {
+  border-color: rgba(121, 40, 255, 1);
+  box-shadow: 0 20px 45px -5px rgba(121, 40, 255, 0.55), 0 0 40px rgba(121, 40, 255, 0.55);
+}
+
+.card-amber {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.35);
+}
+.card-amber:hover {
+  border-color: rgba(245, 158, 11, 1);
+  box-shadow: 0 20px 45px -5px rgba(245, 158, 11, 0.55), 0 0 40px rgba(245, 158, 11, 0.55);
+}
+
+.card-blue {
+  border-color: rgba(36, 91, 255, 0.65);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(36, 91, 255, 0.38);
+}
+.card-blue:hover {
+  border-color: rgba(36, 91, 255, 1);
+  box-shadow: 0 20px 45px -5px rgba(36, 91, 255, 0.55), 0 0 40px rgba(36, 91, 255, 0.55);
+}
+
+.card-emerald {
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(16, 185, 129, 0.35);
+}
+.card-emerald:hover {
+  border-color: rgba(16, 185, 129, 1);
+  box-shadow: 0 20px 45px -5px rgba(16, 185, 129, 0.55), 0 0 40px rgba(16, 185, 129, 0.55);
+}
+
+.card-magenta {
+  border-color: rgba(230, 56, 255, 0.65);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(230, 56, 255, 0.38);
+}
+.card-magenta:hover {
+  border-color: rgba(230, 56, 255, 1);
+  box-shadow: 0 20px 45px -5px rgba(230, 56, 255, 0.55), 0 0 40px rgba(230, 56, 255, 0.55);
+}
+
+.card-indigo {
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.35);
+}
+.card-indigo:hover {
+  border-color: rgba(99, 102, 241, 1);
+  box-shadow: 0 20px 45px -5px rgba(99, 102, 241, 0.55), 0 0 40px rgba(99, 102, 241, 0.55);
+}
+
+/* Floating Animations */
+.cosmic-float-1 {
+  animation: cosmicFloatA 6s ease-in-out infinite;
+}
+.cosmic-float-2 {
+  animation: cosmicFloatB 7.5s ease-in-out infinite;
+}
+.cosmic-float-3 {
+  animation: cosmicFloatC 6.8s ease-in-out infinite;
+}
+.cosmic-float-4 {
+  animation: cosmicFloatD 8.2s ease-in-out infinite;
+}
+
+@keyframes cosmicFloatA {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.8deg);
+  }
+}
+
+@keyframes cosmicFloatB {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-1deg);
+  }
+}
+
+@keyframes cosmicFloatC {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(-0.6deg);
+  }
+}
+
+@keyframes cosmicFloatD {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.2deg);
+  }
+}
+
+/* ==========================================================================
+   6. 4-PILLAR GLASS DOCK (BELOW MAIN BUTTON)
+   ========================================================================= */
+.cosmic-four-dock {
+  background: rgba(18, 22, 58, 0.68);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 25px rgba(121, 40, 255, 0.2);
+}
+
+.cosmic-dock-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 18px;
+  border-radius: 14px;
+  transition: all 0.22s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.cosmic-dock-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   7. WIDE LUMINOUS BOTTOM PANEL (7 ACADEMIC CATEGORIES)
+   ========================================================================= */
+.cosmic-bottom-panel {
+  background: rgba(10, 13, 42, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 45px rgba(121, 40, 255, 0.35);
+}
+
+.cosmic-pillar-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.cosmic-pillar-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border-color: rgba(0, 217, 255, 0.75);
+  box-shadow: 0 0 25px rgba(0, 217, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Dream Learn Achieve Calligraphy Script */
+.dream-script-text {
+  font-family: 'Brush Script MT', 'Segoe Script', cursive, sans-serif;
+  font-size: 1.65rem;
+  font-style: italic;
+  line-height: 1.15;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(0, 217, 255, 0.5);
+  transform: rotate(-10deg);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .cosmic-ring-outer,
+  .cosmic-ring-inner,
+  .cosmic-float-1,
+  .cosmic-float-2,
+  .cosmic-float-3,
+  .cosmic-float-4,
+  .cosmic-enter-btn {
+    animation: none !important;
+  }
+}
+
+/* Wing Card Exact Symmetrical Positions */
+.wing-pos-left-1 {
+  top: 10px;
+  left: 10px;
+  width: 290px;
+}
+.wing-pos-left-2 {
+  top: 110px;
+  left: 30px;
+  width: 300px;
+}
+.wing-pos-left-3 {
+  top: 215px;
+  left: 15px;
+  width: 310px;
+}
+.wing-pos-left-4 {
+  top: 320px;
+  left: 35px;
+  width: 290px;
+}
+
+.wing-pos-right-1 {
+  top: 10px;
+  right: 10px;
+  width: 290px;
+}
+.wing-pos-right-2 {
+  top: 110px;
+  right: 30px;
+  width: 300px;
+}
+.wing-pos-right-3 {
+  top: 215px;
+  right: 15px;
+  width: 310px;
+}
+.wing-pos-right-4 {
+  top: 320px;
+  right: 35px;
+  width: 290px;
+}
+
+/* ==========================================================================
+   8. MOBILE & TABLET RESPONSIVE TUNING (320px - 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .cosmic-ring-outer {
+    width: 90vw;
+    max-width: 520px;
+    height: 220px;
+    top: 200px;
+    border-width: 2px;
+  }
+  .cosmic-ring-inner {
+    width: 75vw;
+    max-width: 420px;
+    height: 170px;
+    top: 200px;
+  }
+  .nebula-top-cyan,
+  .nebula-top-magenta {
+    width: 320px;
+    height: 320px;
+    filter: blur(60px);
+  }
+  .nebula-center-ring {
+    width: 100vw;
+    height: 280px;
+    filter: blur(60px);
+  }
+  .sunset-horizon-wash {
+    height: 220px;
+    filter: blur(50px);
+  }
+  .cosmic-hero-heading {
+    font-size: clamp(1.75rem, 7.5vw, 2.75rem);
+    letter-spacing: -0.02em;
+  }
+}
+
+@media (max-width: 480px) {
+  .cosmic-enter-btn {
+    padding: 13px 22px;
+    font-size: 0.9375rem;
+    gap: 9px;
+    max-width: 96%;
+    min-height: 48px;
+  }
+  .cosmic-four-dock {
+    gap: 3px;
+    padding: 6px;
+    border-radius: 14px;
+    max-width: 100%;
+  }
+  .cosmic-dock-btn {
+    padding: 6px 10px;
+    font-size: 0.6875rem;
+    gap: 3px;
+  }
+  .cosmic-pillar-btn {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    gap: 6px;
+    min-height: 42px;
+  }
+  .dream-script-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .cosmic-hero-heading {
+    font-size: 1.55rem;
+  }
+  .cosmic-enter-btn {
+    padding: 11px 15px;
+    font-size: 0.8125rem;
+    gap: 6px;
+  }
+  .cosmic-dock-btn {
+    padding: 5px 6px;
+    font-size: 0.625rem;
+  }
+  .cosmic-pillar-btn {
+    padding: 6px 10px;
+    font-size: 0.6875rem;
+  }
+}
+

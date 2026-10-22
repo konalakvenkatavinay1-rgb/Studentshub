@@ -1,0 +1,465 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN SYSTEM TOKENS
+   Light Mode: Sage Green (#9CAF88), Concrete Gray (#A7A7A7), Burnt Amber (#CC5500)
+   Dark Mode: Midnight Navy (#1B1E4A), Warm Stone Gray (#AFAEA2), Crimson Red (#D21319)
+   ============================================================ */
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  
+  /* Light Mode Palette */
+  --theme-bg: #F5F7F4;
+  --theme-surface: #FFFFFF;
+  --theme-surface-soft: #F0F4EE;
+  --theme-border: #D4DED0;
+  --theme-border-soft: #E2EBE0;
+  --theme-text-primary: #1F271B;
+  --theme-text-secondary: #586653;
+  --theme-text-muted: #83917E;
+  
+  --theme-primary: #9CAF88;
+  --theme-primary-dark: #7A8D67;
+  --theme-primary-light: #E8EEE4;
+  
+  --theme-neutral: #A7A7A7;
+  --theme-neutral-soft: #EAEAEA;
+  
+  --theme-accent: #CC5500;
+  --theme-accent-hover: #B34A00;
+  --theme-accent-light: #FBEEE6;
+}
+
+[data-theme='dark'],
+.dark {
+  /* Dark Mode Palette */
+  --theme-bg: #0F1128;
+  --theme-surface: #1B1E4A;
+  --theme-surface-soft: #14173D;
+  --theme-surface-elevated: #23275E;
+  --theme-border: #2B3070;
+  --theme-border-soft: #383F8A;
+  --theme-text-primary: #F8F9FA;
+  --theme-text-secondary: #AFAEA2;
+  --theme-text-muted: #7C7B72;
+  
+  --theme-primary: #1B1E4A;
+  --theme-primary-light: #252B66;
+  
+  --theme-neutral: #AFAEA2;
+  --theme-neutral-soft: #23275E;
+  
+  --theme-accent: #D21319;
+  --theme-accent-hover: #E0242A;
+  --theme-accent-light: rgba(210, 19, 25, 0.15);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--theme-bg);
+  color: var(--theme-text-primary);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ============================================================
+   DARK MODE — PREMIUM PALETTE OVERRIDES
+   Midnight Navy: #1B1E4A | Warm Stone Gray: #AFAEA2 | Crimson Red: #D21319
+   ============================================================ */
+
+/* Base Canvas & Main Background */
+.dark body,
+.dark .min-h-screen {
+  background-color: #0F1128 !important;
+  color: #F8F9FA !important;
+}
+
+/* Structural Shell: Sidebar & Header */
+.dark aside,
+.dark header {
+  background-color: #1B1E4A !important;
+  border-color: #2B3070 !important;
+  color: #F8F9FA;
+}
+
+/* Card Surfaces */
+.dark .bg-white {
+  background-color: #181B44 !important;
+  color: #FFFFFF;
+}
+
+/* Sub-surfaces, pill chips, inner wells */
+.dark .bg-slate-50,
+.dark .bg-slate-100,
+.dark [class*="bg-slate-50"],
+.dark [class*="bg-slate-100"] {
+  background-color: #121538 !important;
+  color: #E2E8F0;
+}
+
+.dark .bg-slate-200,
+.dark [class*="bg-slate-200"] {
+  background-color: #1E2356 !important;
+}
+
+/* Prevent bright silver/white gradient washes in dark mode */
+.dark [class*="via-white"] {
+  --tw-gradient-via: #1B1E4A !important;
+}
+
+.dark [class*="from-blue-50"] {
+  --tw-gradient-from: #181B44 !important;
+}
+
+.dark [class*="to-blue-50"] {
+  --tw-gradient-to: #121538 !important;
+}
+
+.dark [class*="from-indigo-50"] {
+  --tw-gradient-from: #181B44 !important;
+}
+
+.dark [class*="to-indigo-50"] {
+  --tw-gradient-to: #121538 !important;
+}
+
+/* Text Hierarchy — Crisp, Sharp & Highly Visible */
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark [class*="text-slate-900"],
+.dark [class*="text-slate-800"] {
+  color: #FFFFFF !important;
+}
+
+.dark .text-slate-700,
+.dark .text-slate-600,
+.dark [class*="text-slate-700"],
+.dark [class*="text-slate-600"] {
+  color: #E2E8F0 !important; /* Bright, clean, readable slate-200 */
+}
+
+.dark .text-slate-500,
+.dark .text-slate-400,
+.dark [class*="text-slate-500"],
+.dark [class*="text-slate-400"] {
+  color: #94A3B8 !important; /* Sharp, high-contrast slate-400 */
+}
+
+.dark .text-slate-300,
+.dark [class*="text-slate-300"] {
+  color: #CBD5E1 !important;
+}
+
+/* Borders & Dividers */
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark .border-slate-300,
+.dark [class*="border-slate-100"],
+.dark [class*="border-slate-200"] {
+  border-color: #2B3070 !important;
+}
+
+.dark .border-dashed {
+  border-color: #383F8A !important;
+}
+
+/* Primary Brand Accent (Blue -> Crimson Red in Dark Mode) */
+.dark .text-blue-600,
+.dark .text-blue-700 {
+  color: #FF5A5F !important;
+}
+
+.dark .text-blue-800 {
+  color: #FFA4A8 !important;
+}
+
+.dark .bg-blue-600,
+.dark .bg-blue-700 {
+  background-color: #D21319 !important;
+  color: #FFFFFF !important;
+}
+
+.dark .hover\:bg-blue-600:hover,
+.dark .hover\:bg-blue-700:hover {
+  background-color: #E0242A !important;
+}
+
+.dark .bg-blue-50,
+.dark .bg-blue-100 {
+  background-color: rgba(210, 19, 25, 0.14) !important;
+  color: #FFA4A8 !important;
+}
+
+.dark .border-blue-100,
+.dark .border-blue-200,
+.dark .border-blue-300,
+.dark .border-blue-400,
+.dark .border-blue-500,
+.dark .border-blue-600 {
+  border-color: #D21319 !important;
+}
+
+/* Hover States across Dark Mode */
+.dark .hover\:bg-slate-50:hover,
+.dark .hover\:bg-slate-100:hover,
+.dark [class*="hover:bg-slate-50"]:hover,
+.dark [class*="hover:bg-slate-100"]:hover,
+.dark [class*="hover:bg-blue-50"]:hover {
+  background-color: #23275E !important;
+}
+
+.dark .hover\:text-slate-900:hover,
+.dark .hover\:text-slate-800:hover,
+.dark .hover\:text-slate-700:hover {
+  color: #FFFFFF !important;
+}
+
+.dark .hover\:border-blue-300:hover,
+.dark .hover\:border-blue-200:hover {
+  border-color: #D21319 !important;
+}
+
+/* Form Controls & Inputs */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #121538 !important;
+  border-color: #2B3070 !important;
+  color: #F8F9FA !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #706F65 !important;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: #D21319 !important;
+  box-shadow: 0 0 0 2px rgba(210, 19, 25, 0.25) !important;
+  outline: none !important;
+}
+
+/* Navigation active item in Sidebar */
+.dark aside .bg-blue-50 {
+  background-color: rgba(210, 19, 25, 0.16) !important;
+  border-left: 3px solid #D21319 !important;
+}
+
+.dark aside .text-blue-700 {
+  color: #FF5A5F !important;
+}
+
+/* Modal Backdrops & Dialogs */
+.dark .bg-slate-900\/50,
+.dark [class*="bg-slate-900/"] {
+  background-color: rgba(7, 9, 22, 0.75) !important;
+}
+
+/* Notification dot */
+.dark .bg-blue-600.rounded-full {
+  background-color: #D21319 !important;
+}
+
+/* ============================================================
+   SIMULATION TOOLS — Dark Mode Refinements
+   ============================================================ */
+
+/* Simulation tool card badge states */
+.dark .bg-emerald-100 {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  color: #6EE7B7 !important;
+}
+
+.dark .bg-amber-100 {
+  background-color: rgba(175, 174, 162, 0.18) !important;
+  color: #DEDDD4 !important;
+  border: 1px solid rgba(175, 174, 162, 0.3) !important;
+}
+
+.dark .text-amber-800 {
+  color: #DEDDD4 !important;
+}
+
+/* Tool launcher button */
+.dark .bg-slate-900 {
+  background-color: #D21319 !important;
+  color: #FFFFFF !important;
+}
+
+.dark .bg-slate-900:hover,
+.dark .hover\:bg-slate-800:hover {
+  background-color: #E0242A !important;
+}
+
+.dark button:disabled {
+  background-color: #121538 !important;
+  color: #7C7B72 !important;
+  border-color: #2B3070 !important;
+}
+
+/* ============================================================
+   ACADEMIC CALENDAR — Dark Mode
+   ============================================================ */
+
+.dark .academic-calendar-page {
+  --cal-ink: #FFFFFF;
+  --cal-muted: #AFAEA2;
+  --cal-line: #2B3070;
+  --cal-blue: #D21319;
+  --cal-bg: #0F1128;
+  background: #0F1128 !important;
+  color: #FFFFFF !important;
+}
+
+.dark .calendar-main-card,
+.dark .side-card,
+.dark .event-details-card,
+.dark .calendar-day,
+.dark .academic-year-pill,
+.dark .month-arrow {
+  background-color: #181B44 !important;
+  border-color: #2B3070 !important;
+  color: #AFAEA2 !important;
+}
+
+.dark .calendar-day:hover {
+  background-color: #23275E !important;
+}
+
+.dark .calendar-day.selected-day {
+  background-color: #2A1728 !important;
+  box-shadow: inset 0 0 0 2px #D21319 !important;
+}
+
+.dark .calendar-heading h1,
+.dark .month-title-wrap h2,
+.dark .side-card-heading h3,
+.dark .details-heading h3,
+.dark .day-number {
+  color: #FFFFFF !important;
+}
+
+.dark .today-button {
+  background: rgba(210, 19, 25, 0.16) !important;
+  border-color: #D21319 !important;
+  color: #FF787D !important;
+}
+
+/* ============================================================
+   NOTEBOOK TODO LIST — Dark Mode
+   ============================================================ */
+
+.dark .todo-note-item {
+  background-color: #181B44;
+  border-color: #2B3070;
+  color: #F8F9FA;
+}
+
+.dark .todo-note-item:hover {
+  background-color: #23275E;
+}
+
+.dark .todo-note-item.active {
+  background-color: #23275E;
+  border-left: 3px solid #D21319;
+}
+
+/* ============================================================
+   CUSTOM SCROLLBARS
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0F1128;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2B3070;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #383F8A;
+}
+
+/* ============================================================
+   MICRO-ANIMATIONS & TRANSITIONS
+   ============================================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+/* Micro interactions */
+.bos-subject-item,
+.bos-year-card,
+.bos-sem-btn,
+.bos-drive-link {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.bos-subject-item:hover,
+.bos-year-card:hover {
+  transform: translateY(-2px);
+}
+
+.dark .bos-subject-item:hover,
+.dark .bos-year-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark .bos-drive-link {
+  background: linear-gradient(135deg, rgba(27, 30, 74, 0.95), rgba(18, 21, 56, 0.95)) !important;
+  border-color: #2B3070 !important;
+}
+
+.dark .bos-drive-link:hover {
+  border-color: #D21319 !important;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
